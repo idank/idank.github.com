@@ -76,7 +76,20 @@ Given two sorted arrays A and B of length n, find the kth smallest element in th
 <p>Now if $k &lt; i+j$, we can say for sure that our $k$th smallest element is not $A[i]$ or any of A&#8217;s elements after it. Similarly, if $k \geq i+j$, that rules out&nbsp;$B[1..j]$.</p>
 <p>We start at $A[\lfloor \frac{n}{2} \rfloor], B[\lfloor \frac{n}{2} \rfloor]$, and depending on who&#8217;s bigger, we use the above observations to rule out either the bottom or top half of one of the arrays. If we rule the top of an array, we go back to our original problem only one of the arrays has shrunk in half. If we rule out the bottom, we now have to find the $(k-$ number of elements thrown$)$ smallest element in the halved array and the untouched&nbsp;one.</p>
 <p>We are done when one of the arrays is empty, then we simply return the $k$th element in the other&nbsp;one.</p>
-<p>It should be fairly obvious why this takes $\Theta (\lg n)$. At each step of the algorithm we do a constant amount of work, and our recursion call loses half an array (similar to binary&nbsp;search).</p>      </div>
+<p>It should be fairly obvious why this takes $\Theta (\lg n)$. At each step of the algorithm we do a constant amount of work, and our recursion call loses half an array (similar to binary&nbsp;search).</p>
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'alephnull1'; // required: replace example with your forum shortname
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
       </div> <!--! end of #container -->
   <div id="footer">
   </div>

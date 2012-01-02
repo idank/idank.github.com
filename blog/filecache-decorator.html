@@ -86,7 +86,20 @@
 <p>So we have to make sure our cache is reliable, and if we can&#8217;t, we must fallback to reading the file every time the cache is&nbsp;invalidated.</p>
 <p>Luckily Mercurial&#8217;s approach to writing files helps us here. Essentially most of the important files under .hg/ are either: 1) atomically replaced, 2)&nbsp;appended.</p>
 <p>If our filesystem is able to tell us a) if a file is replaced, or b) if it has subsecond precision, we&#8217;re basically good to go. Because if we have (a) then (1) is covered, and (2) is covered because st_size changes on append. And if we have (b) it&#8217;s&nbsp;obvious.</p>
-<p>The current plan is to use the above test to make sure our cache is reliable, otherwise read the file every time. In the future we can improve this by also noting <strong>when</strong> the file was&nbsp;read.</p>      </div>
+<p>The current plan is to use the above test to make sure our cache is reliable, otherwise read the file every time. In the future we can improve this by also noting <strong>when</strong> the file was&nbsp;read.</p>
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'alephnull1'; // required: replace example with your forum shortname
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
       </div> <!--! end of #container -->
   <div id="footer">
   </div>

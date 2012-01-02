@@ -52,7 +52,7 @@ ul ul, ol ol {
   font-weight: 100;
   letter-spacing: -1px;
   margin: 0 0 10px;
-  padding: 0px 2px 4px 5px;
+  padding: 0px 5px 4px 2px;
 }
 .title .footer {
   font-size: 0.857em;
@@ -76,11 +76,6 @@ ul ul, ol ol {
 }
 li {
   padding: 0 4px;
-}
-.post-tags {
-  text-align: left;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 blockquote {
   color: #888888;
@@ -119,33 +114,24 @@ h1 a {
 h1 a:hover {
   color: #fba919;
 }
-.publish_date {
-  margin-top: -8px;
-  margin-bottom: 0px;
-  text-align: right;
-  font-size: 0.8em;
-  width: 800px;
-  color: #23af4c;
+#disqus_thread {
+  margin-top: 50px;
 }
-.pages a {
-  padding: 3px;
+#disqus_thread h3 {
+  border-bottom: 1px solid #e5e5e5;
 }
-.commentslink {
-  margin-bottom: 35px;
-  display: block;
-  border-bottom: solid 1px #dadada;
-  padding-bottom: 25px;
+#disqus_thread #dsq-subscribe {
+  display: none;
 }
 h3 {
   color: #fba919;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 100;
   margin: 10px 0 8px;
 }
 h4 {
   color: #23af4c;
 }
-/*** Main wrap and header ***/
 #container {
   margin: 2em auto;
   padding: 0;
@@ -173,19 +159,6 @@ h4 {
 #header #navigation a:hover {
   color: #fba919;
 }
-div.pages {
-  color: gray;
-  font-size: 1.5em;
-  font-weight: 700;
-  letter-spacing: -1px;
-  line-height: 1.2em;
-  margin: -15px 0 60px 0px;
-  text-align: right;
-}
-div.pages div {
-  display: inline;
-}
-/*** Main content ***/
 .content {
   float: left;
   line-height: 1.5em;
@@ -214,10 +187,6 @@ div.pages div {
   direction: rtl;
   text-align: right;
 }
-.title h2 {
-  padding: 0px 5px 4px 2px;
-}
-/*** Footer ***/
 #footer {
   border-top: 4px solid #dadada;
   clear: both;
@@ -227,37 +196,6 @@ div.pages div {
   margin: 0 auto;
   padding: 8px 0;
   text-align: right;
-}
-#footer p {
-  margin: 0;
-  padding: 0;
-}
-#footer a {
-  color: #808080;
-}
-.fade {
-  color: #c5c5c5;
-}
-.fade-small {
-  color: #c5c5c5;
-  position: relative;
-  letter-spacing: 0px;
-  bottom: 0.5em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  font-size: 0.25em;
-}
-.pager-left {
-  float: left;
-  text-align: left;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-.pager-right {
-  float: right;
-  text-align: right;
-  margin-left: 10px;
-  margin-bottom: 10px;
 }
 /*
 

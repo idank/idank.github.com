@@ -85,7 +85,20 @@ Also, a binary tree of height <em>h</em>, has at most $2^h$&nbsp;leaves.</p>
 <p>For $k \leq n/2$ the above inequality gives us $h &gt; k\lg{n}$, so the height of the tree is&nbsp;$\Omega(k\lg{n})$.</p>
 <p>If $k &gt; n/2$, we can think of the problem as finding the <em>n-k</em> <strong>largest</strong> elements and sorting the rest of the elements (this works because the &#8220;rest&#8221; are in fact the&nbsp;smallest).</p>
 <p>We already showed that we can solve the problem if $k \leq n/2$ for the smallest, but it doesn&#8217;t really matter whether it&#8217;s the smallest or largest. So finding the $n-k &lt; n/2$ largest elements will take $\Omega((n-k)\lg{n})$, and sorting the <em>k &gt; n/2</em> remaining elements will take&nbsp;$\Omega(k\lg{k})=\Omega(k\lg{n/2})=\Omega(k\lg{n})$.</p>
-<p>Overall it takes $\Omega((n-k)\lg{n})+\Omega(k\lg{n})=\Omega(k\lg{n})$, since $n-k &lt; n/2 &lt; k$, and we&#8217;re&nbsp;done.</p>      </div>
+<p>Overall it takes $\Omega((n-k)\lg{n})+\Omega(k\lg{n})=\Omega(k\lg{n})$, since $n-k &lt; n/2 &lt; k$, and we&#8217;re&nbsp;done.</p>
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'alephnull1'; // required: replace example with your forum shortname
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
       </div> <!--! end of #container -->
   <div id="footer">
   </div>

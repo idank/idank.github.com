@@ -91,7 +91,20 @@ find the $k$-th smallest element in a given array using the black-box in linear 
         &amp;\leq c (\max (\left \lfloor \frac{in}{m} \right \rfloor-1, n-\left \lfloor \frac{in}{m} \right \rfloor-1))+an &#92;\
         &amp;\leq c (\max ( \frac{in}{m} , n- \frac{in}{m} ))+an &#92;\
         &amp;=cn(\max ( \frac{i}{m} , 1-\frac{i}{m} ))+an&nbsp;\end{align}$$</p>
-<p>Since $ i/m &lt; 1 $, let us denote $ q=\max ( \frac{i}{m} , 1-\frac{i}{m} ) &lt; 1 $: $$ T(n) \leq cqn+an = cn - (1-q)cn+an = cn+(an-(1-q)cn) $$ We are looking for $ c $ such that $ an-(1-q)cn \leq 0 $, any $ c \geq \frac{a}{1-q} $ will&nbsp;do.</p>      </div>
+<p>Since $ i/m &lt; 1 $, let us denote $ q=\max ( \frac{i}{m} , 1-\frac{i}{m} ) &lt; 1 $: $$ T(n) \leq cqn+an = cn - (1-q)cn+an = cn+(an-(1-q)cn) $$ We are looking for $ c $ such that $ an-(1-q)cn \leq 0 $, any $ c \geq \frac{a}{1-q} $ will&nbsp;do.</p>
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'alephnull1'; // required: replace example with your forum shortname
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
       </div> <!--! end of #container -->
   <div id="footer">
   </div>
