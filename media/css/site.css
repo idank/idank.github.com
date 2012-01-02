@@ -123,6 +123,9 @@ h1 a:hover {
 #disqus_thread #dsq-subscribe {
   display: none;
 }
+.dsq-brlink {
+  display: none;
+}
 h3 {
   color: #fba919;
   font-size: 1.2em;
