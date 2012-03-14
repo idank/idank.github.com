@@ -65,11 +65,26 @@
 <li><a href="http://dl.dropbox.com/u/18261201/20407-15.pdf">15</a> - חסם תחתון למציאת k האיברים הקטנים ביותר, מציאת 4 (או 5) איברים שונים שסכומם z, בעיית הגלישה במערך, פתרון בעיית&nbsp;Compactify-List.</li>
 <li><a href="http://dl.dropbox.com/u/18261201/20407-16.pdf">16</a> - מציאת זוג (או 4) איברים שונים שסכומם z בתוחלת זמן ריצה לינארית (או ריבועית), מיעון פתוח, אלגוריתם חלופי למחיקת צומת מעץ בינארי, שיחזור עץ חיפוש בינארי מסריקה&nbsp;סופית.</li>
 <li><a href="http://dl.dropbox.com/u/18261201/20407-17.pdf">17</a> - עץ אדום-אדום-שחור, עץ צובר, איך לבדוק אם עץ בינארי הוא עץ חיפוש בינארי, בניית מבנה נתונים של זוגות של מספרים&nbsp;ממשיים.</li>
+<li><a href="http://dl.dropbox.com/u/18261201/20407-18.pdf">18</a> - מימוש של ספרייה בעזרת עץ אדום-שחור ורשימה&nbsp;מקושרת.</li>
 <li><a href="http://dl.dropbox.com/u/18261201/20407-tests.pdf">אוסף בחינות פתורות</a> - תאריך עדכון אחרון&nbsp;12.02.2012.</li>
 </ul>
 <h3>אינפי 2,&nbsp;20212</h3>
 <ul>
-<li><a href="http://dl.dropbox.com/u/18261201/infi2-15-solution.pdf">15</a> - <a href="http://dl.dropbox.com/u/18261201/infi2-15.pdf">מטלה</a></li>
+<li>
+<p><a href="http://dl.dropbox.com/u/18261201/infi2-15-solution.pdf">15</a> - <a href="http://dl.dropbox.com/u/18261201/infi2-15.pdf">מטלה</a>
+<div style='direction: ltr; text-align: left;'>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'alephnull1'; // required: replace example with your forum&nbsp;shortname</p>
+<p>(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a></div></p>
+</li>
 </ul>      </div>
       </div> <!--! end of #container -->
   <div id="footer">
@@ -82,5 +97,39 @@
         jQuery("abbr.timeago").timeago();
       });
   </script>
-        </body>
+    <script type="text/javascript">
+if (typeof jQuery != 'undefined') {
+    jQuery(document).ready(function($) {
+        var filetypes = /\.(zip|pdf)$/i;
+        var baseHref = '';
+        if (jQuery('base').attr('href') != undefined)
+            baseHref = jQuery('base').attr('href');
+        jQuery('a').each(function() {
+            var href = jQuery(this).attr('href');
+            if (href && (href.match(/^https?\:/i)) && (!href.match(document.domain))) {
+                jQuery(this).click(function() {
+                    var extLink = href.replace(/^https?\:\/\//i, '');
+                    _gaq.push(['_trackEvent', 'External', 'Click', extLink]);
+                    if (jQuery(this).attr('target') != undefined && jQuery(this).attr('target').toLowerCase() != '_blank') {
+                        setTimeout(function() { location.href = href; }, 200);
+                        return false;
+                    }
+                });
+            }
+            else if (href && href.match(filetypes)) {
+                jQuery(this).click(function() {
+                    var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
+                    var filePath = href;
+                    _gaq.push(['_trackEvent', 'Download', 'Click-' + extension, filePath]);
+                    if (jQuery(this).attr('target') != undefined && jQuery(this).attr('target').toLowerCase() != '_blank') {
+                        setTimeout(function() { location.href = baseHref + href; }, 200);
+                        return false;
+                    }
+                });
+            }
+        });
+    });
+}
+</script>
+  </body>
 </html>
