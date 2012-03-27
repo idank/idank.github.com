@@ -60,7 +60,7 @@
 <h3>מבני נתונים ומבוא לאלגוריתמים, 20407 <small><a href="http://dl.dropbox.com/u/18261201/algo.pdf">מטלות 2012א</a></small></h3>
 <ul>
 <li><a href="http://dl.dropbox.com/u/18261201/20407-12.pdf">12</a> - שיטת האב, עלות העברת פרמטרים, עצים שמאליים (ערמות שמאליות), מיזוג עצים&nbsp;שמאליים.</li>
-<li><a href="http://dl.dropbox.com/u/18261201/20407-13.pdf">13</a> - הסבר יחסית מפורט לשאלה 3 נמצא <a href="/blog/kth-smallest-in-sorted-union">כאן</a>, ולשאלה 4 <a href="/blog/black-box-selection">כאן</a></li>
+<li><a href="http://dl.dropbox.com/u/18261201/20407-13.pdf">13</a> - הסבר יחסית מפורט לשאלה 3 נמצא <a href="/blog/kth-smallest-in-sorted-union.html">כאן</a>, ולשאלה 4 <a href="/blog/black-box-selection.html">כאן</a></li>
 <li><a href="http://dl.dropbox.com/u/18261201/20407-14.zip">14</a> - השוואה בין אלגוריתמי מיון bubble sort, bidirectional bubble sort,&nbsp;shakesort.</li>
 <li><a href="http://dl.dropbox.com/u/18261201/20407-15.pdf">15</a> - חסם תחתון למציאת k האיברים הקטנים ביותר, מציאת 4 (או 5) איברים שונים שסכומם z, בעיית הגלישה במערך, פתרון בעיית&nbsp;Compactify-List.</li>
 <li><a href="http://dl.dropbox.com/u/18261201/20407-16.pdf">16</a> - מציאת זוג (או 4) איברים שונים שסכומם z בתוחלת זמן ריצה לינארית (או ריבועית), מיעון פתוח, אלגוריתם חלופי למחיקת צומת מעץ בינארי, שיחזור עץ חיפוש בינארי מסריקה&nbsp;סופית.</li>
@@ -106,23 +106,23 @@ if (typeof jQuery != 'undefined') {
             baseHref = jQuery('base').attr('href');
         jQuery('a').each(function() {
             var href = jQuery(this).attr('href');
-            if (href && (href.match(/^https?\:/i)) && (!href.match(document.domain))) {
-                jQuery(this).click(function() {
-                    var extLink = href.replace(/^https?\:\/\//i, '');
-                    _gaq.push(['_trackEvent', 'External', 'Click', extLink]);
-                    if (jQuery(this).attr('target') != undefined && jQuery(this).attr('target').toLowerCase() != '_blank') {
-                        setTimeout(function() { location.href = href; }, 200);
-                        return false;
-                    }
-                });
-            }
-            else if (href && href.match(filetypes)) {
+            if (href && href.match(filetypes)) {
                 jQuery(this).click(function() {
                     var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
                     var filePath = href;
                     _gaq.push(['_trackEvent', 'Download', 'Click-' + extension, filePath]);
                     if (jQuery(this).attr('target') != undefined && jQuery(this).attr('target').toLowerCase() != '_blank') {
                         setTimeout(function() { location.href = baseHref + href; }, 200);
+                        return false;
+                    }
+                });
+            }
+            else if (href && (href.match(/^https?\:/i)) && (!href.match(document.domain))) {
+                jQuery(this).click(function() {
+                    var extLink = href.replace(/^https?\:\/\//i, '');
+                    _gaq.push(['_trackEvent', 'External', 'Click', extLink]);
+                    if (jQuery(this).attr('target') != undefined && jQuery(this).attr('target').toLowerCase() != '_blank') {
+                        setTimeout(function() { location.href = href; }, 200);
                         return false;
                     }
                 });
