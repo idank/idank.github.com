@@ -1,50 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>aleph.nu</title><link href="http://aleph.nu/" rel="alternate"></link><link href="http://aleph.nu/feeds/all.atom.xml" rel="self"></link><id>http://aleph.nu/</id><updated>2015-04-13T11:37:00-07:00</updated><entry><title>the python road not taken</title><link href="http://aleph.nu/blog/2015/the-python-road-not-taken/" rel="alternate"></link><updated>2015-04-13T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2015-04-13:blog/2015/the-python-road-not-taken/</id><summary type="html">&lt;p&gt;Imagine you have a road that people have been driving on for years. This road is
-solid. Damage would be fixed quickly. Every now and then it would be upgraded
-by adding a lane or raising the speed limit. It was connected to many other
-roads.&lt;/p&gt;
-&lt;p&gt;At some point the owners of the road decided the ground it is on isn't good
-enough, and went on to create a fork in the road so they could start building
-a new one. This new road was worked on for years. It attracted so many workers
-to help build it in hopes of a better road. Many plans were made to help
-drivers move to this new and improved road. But this road came with a price:
-pretty much everyone would need to buy a brand new car to use the road. Not
-only that, when people came to see how this road is better, the only thing they
-saw is that the road is slightly wider and that the speed limit is a fraction
-higher. Another problem with the new road was that it wasn't as connected as
-the old road, so drivers would have no way of reaching some of their
-destinations.  Over time connections were built, but often times driving on
-them resulted in fatalities.&lt;/p&gt;
-&lt;p&gt;People tried to tell the owners of the road that switching to the new
-road is too expensive with little upside, but the owners didn't listen and
-kept working on the new road, claiming that when enough time will pass
-everyone will switch to the new road.&lt;/p&gt;
-&lt;p&gt;Meanwhile the old road was still there with many drivers using it every single
-day. Holes in the road would still be fixed, but the owners ceased to
-improve it, now that they had built the new road.&lt;/p&gt;
-&lt;p&gt;Years have gone by and still drivers would choose to use the old and familiar
-road. Many attempts were made to lure drivers to use the new road, such as
-trading in the drivers old cars when they buy a new one.  Others seemed more
-crazy like adding a special lane for people who give a weeks notice before they
-use the road. Very few drivers would care about these.&lt;/p&gt;
-&lt;p&gt;It is unclear what the drivers will do a few years from now. Maybe they'll all
-buy new cars and finally start using the new road? Maybe the new road will add
-enough lanes and use other sales tricks to attract the drivers? Time will tell.&lt;/p&gt;
-&lt;p&gt;In the mean time, drivers are losing faith and begin questioning the future of
-both roads and are looking at other roads in the hopes of a safer and more
-pleasant drive.&lt;/p&gt;
-&lt;p&gt;--&lt;/p&gt;
-&lt;p&gt;I used this analogy to describe the state of Python 2/3 to a friend who knows
-nothing about programming. Like many Python programmers, he too would
-continue using the old road.&lt;/p&gt;
-&lt;p&gt;As the sun sets on PyCon 2015 and another year has gone by without considerable
-progress towards adoption of Python 3, we are introduced to optional type hints
-in the language.  Optional was repeated numerous times in GvR keynote,
-as if he's already giving his defense against it.  I think it
-misses the point a little because if just 10% of the python I'll be reading looks like
-&lt;a href="https://www.python.org/dev/peps/pep-0484/#function-overloading"&gt;this&lt;/a&gt; then
-I won't be reading it for much longer.&lt;/p&gt;
-&lt;p&gt;The end of the tunnel to Python 3 is no where in sight.&lt;/p&gt;</summary><category term="python"></category></entry><entry><title>lower bound on finding the k-smallest elements in sorted order</title><link href="http://aleph.nu/blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/" rel="alternate"></link><updated>2012-01-01T14:58:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-01-01:blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>aleph.nu</title><link href="http://aleph.nu/" rel="alternate"></link><link href="http://aleph.nu/feeds/all.atom.xml" rel="self"></link><id>http://aleph.nu/</id><updated>2012-10-13T11:37:00-07:00</updated><entry><title>upstart script section exits prematurely</title><link href="http://aleph.nu/blog/2012/upstart-script-section-exits-prematurely/" rel="alternate"></link><updated>2012-10-13T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-10-13:blog/2012/upstart-script-section-exits-prematurely/</id><summary type="html">&lt;p&gt;I wrote my first Upstart script today, and like anyone wanting
+to get the job done quickly I haven't read the entire &lt;a href="http://upstart.ubuntu.com/cookbook"&gt;cookbook&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So after spending a couple of minutes trying to figure out
+why my two line script is only executing the first command, I returned to the
+cookbook and searched for &lt;code&gt;sh -e&lt;/code&gt; and lo and behold:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Remember that Upstart runs every script section using /bin/sh -e. This means
+that if any simple command fails, the shell will exit.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As a default that probably makes sense for most scripts but it certainly
+surprised me. It should at least be mentioned where they introduce the
+&lt;a href="http://upstart.ubuntu.com/cookbook/#script"&gt;script section&lt;/a&gt; in the cookbook.&lt;/p&gt;
+&lt;p&gt;So if your script contains commands that might fail and that's fine
+by you then you can &lt;code&gt;|| true&lt;/code&gt; them so the shell won't exit.&lt;/p&gt;</summary><category term="bash"></category></entry><entry><title>finding the most repeated value in an array</title><link href="http://aleph.nu/blog/2012/finding-the-most-repeated-value-in-an-array/" rel="alternate"></link><updated>2012-02-04T11:37:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-02-04:blog/2012/finding-the-most-repeated-value-in-an-array/</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;An array of length &lt;em&gt;n&lt;/em&gt; has &lt;em&gt;k&lt;/em&gt; distinct elements, &lt;span class="math"&gt;\(k \lt n\)&lt;/span&gt;. Find the most
+repeated value in the array.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(note that this isn't the same as finding the majority (if there is one) in an
+array which can be done in &lt;span class="math"&gt;\(\Theta(n)\)&lt;/span&gt; by finding the median or using the more
+simplistic Boyer-Moore Majority Vote Algorithm)&lt;/p&gt;
+&lt;p&gt;The straight forward solution gives us &lt;span class="math"&gt;\(\Theta(n\lg{n})\)&lt;/span&gt;, by sorting the array
+and doing a linear pass while maintaining the maximum pair of (value, number of
+repeats).&lt;/p&gt;
+&lt;p&gt;We can slightly improve this to &lt;span class="math"&gt;\(\Theta(n\lg{k})\)&lt;/span&gt; by using &lt;span class="math"&gt;\(O(k)\)&lt;/span&gt; memory.&lt;/p&gt;
+&lt;p&gt;Build a Red-Black tree of all distinct values in the array. There are &lt;em&gt;k&lt;/em&gt; of
+those, so insertion takes &lt;span class="math"&gt;\(O(\lg{k})\)&lt;/span&gt;. In every node, store the number of times
+its key has appeared in a field, call it &lt;em&gt;size&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;We build the tree by going over the input array and inserting each value. If
+a value is already in the tree, we simply increment its &lt;em&gt;size&lt;/em&gt; by 1.&lt;/p&gt;
+&lt;p&gt;Like before, we keep a pair of (value, size) for the most repeated value that
+is currently in the tree. Update this pair as necessary when inserting into the
+tree (by examining the &lt;em&gt;size&lt;/em&gt; of the inserted node).&lt;/p&gt;
+&lt;p&gt;We have &lt;em&gt;n&lt;/em&gt; values to insert to a tree with &lt;em&gt;k&lt;/em&gt; nodes which gives us a total
+running time of &lt;span class="math"&gt;\(\Theta(n\lg{k})\)&lt;/span&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="algorithms"></category></entry><entry><title>lower bound on finding the k-smallest elements in sorted order</title><link href="http://aleph.nu/blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/" rel="alternate"></link><updated>2012-01-01T14:58:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-01-01:blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/</id><summary type="html">&lt;blockquote&gt;
 Any comparison based algorithm solves the problem of finding the &lt;i&gt;k&lt;/i&gt;-smallest
 elements in sorted order in $\Omega(k\lg{n})$ time for an &lt;i&gt;n&lt;/i&gt;-length array.
 &lt;/blockquote&gt;
