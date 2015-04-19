@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <title>finding the most repeated value in an array - aleph.nu</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="http://i.icomoon.io/public/temp/ad724c78d5/UntitledProject/style.css">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />-->
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet" />-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/theme/style.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body id="index" class="archive">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href=""><img src="/images/aleph.png" class="navbar-aleph"></img></a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="https://github.com/idank"><i class="fa fa-lg fa-github"></i></a></li>
+            <li><a href="/about/">about</a></li>
+            <li><a href="/university/">university</a></li>
+            <li><a href="/tags.html">tags</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+    </nav>
+    <section id="content" class="article content">
+      <header>
+        <div class="header">
+          <div class="container">
+            <h3 class="entry-title">
+              finding the most repeated value in an array
+            </h3>
+          </div>
+        </div>
+        <div class="container">
+          <div class="text-muted">Sat 04 February 2012</div>
+        </div>
+      </header>
+    <div class="container">
+<!-- .entry-content -->
+      <div class="entry-content">
+        <blockquote>
+<p>An array of length <em>n</em> has <em>k</em> distinct elements, <span class="math">\(k \lt n\)</span>. Find the most
+repeated value in the array.</p>
+</blockquote>
+<p>(note that this isn't the same as finding the majority (if there is one) in an
+array which can be done in <span class="math">\(\Theta(n)\)</span> by finding the median or using the more
+simplistic Boyer-Moore Majority Vote Algorithm)</p>
+<p>The straight forward solution gives us <span class="math">\(\Theta(n\lg{n})\)</span>, by sorting the array
+and doing a linear pass while maintaining the maximum pair of (value, number of
+repeats).</p>
+<p>We can slightly improve this to <span class="math">\(\Theta(n\lg{k})\)</span> by using <span class="math">\(O(k)\)</span> memory.</p>
+<p>Build a Red-Black tree of all distinct values in the array. There are <em>k</em> of
+those, so insertion takes <span class="math">\(O(\lg{k})\)</span>. In every node, store the number of times
+its key has appeared in a field, call it <em>size</em>.</p>
+<p>We build the tree by going over the input array and inserting each value. If
+a value is already in the tree, we simply increment its <em>size</em> by 1.</p>
+<p>Like before, we keep a pair of (value, size) for the most repeated value that
+is currently in the tree. Update this pair as necessary when inserting into the
+tree (by examining the <em>size</em> of the inserted node).</p>
+<p>We have <em>n</em> values to insert to a tree with <em>k</em> nodes which gives us a total
+running time of <span class="math">\(\Theta(n\lg{k})\)</span>.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+      </div>
+<!-- /.entry-content -->
+      <footer class="post-info text-muted">
+        <button type="button" class="btn btn-default">
+          <a href="/tag/algorithms.html"><div class="fa fa-lg fa-tag"></div> algorithms</a>
+        </button>
+      </footer>
+      <!-- /.post-info -->
+    </section>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; <a href="">aleph.nu</a> powered by <a href="http://getpelican.com/">pelican</a> and <a href="http://nodotcom.org">nikhil</a></p>
+      </div>
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

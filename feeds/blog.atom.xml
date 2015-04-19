@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>aleph.nu</title><link href="http://aleph.nu/" rel="alternate"></link><link href="http://aleph.nu/feeds/blog.atom.xml" rel="self"></link><id>http://aleph.nu/</id><updated>2015-04-13T11:37:00-07:00</updated><entry><title>the python road not taken</title><link href="http://aleph.nu/blog/2015/the-python-road-not-taken/" rel="alternate"></link><updated>2015-04-13T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2015-04-13:blog/2015/the-python-road-not-taken/</id><summary type="html">&lt;p&gt;Imagine you have a road that people have been driving on for years. This road is
+solid. Damage would be fixed quickly. Every now and then it would be upgraded
+by adding a lane or raising the speed limit. It was connected to many other
+roads.&lt;/p&gt;
+&lt;p&gt;At some point the owners of the road decided the ground it is on isn't good
+enough, and went on to create a fork in the road so they could start building
+a new one. This new road was worked on for years. It attracted so many workers
+to help build it in hopes of a better road. Many plans were made to help
+drivers move to this new and improved road. But this road came with a price:
+pretty much everyone would need to buy a brand new car to use the road. Not
+only that, when people came to see how this road is better, the only thing they
+saw is that the road is slightly wider and that the speed limit is a fraction
+higher. Another problem with the new road was that it wasn't as connected as
+the old road, so drivers would have no way of reaching some of their
+destinations.  Over time connections were built, but often times driving on
+them resulted in fatalities.&lt;/p&gt;
+&lt;p&gt;People tried to tell the owners of the road that switching to the new
+road is too expensive with little upside, but the owners didn't listen and
+kept working on the new road, claiming that when enough time will pass
+everyone will switch to the new road.&lt;/p&gt;
+&lt;p&gt;Meanwhile the old road was still there with many drivers using it every single
+day. Holes in the road would still be fixed, but the owners ceased to
+improve it, now that they had built the new road.&lt;/p&gt;
+&lt;p&gt;Years have gone by and still drivers would choose to use the old and familiar
+road. Many attempts were made to lure drivers to use the new road, such as
+trading in the drivers old cars when they buy a new one.  Others seemed more
+crazy like adding a special lane for people who give a weeks notice before they
+use the road. Very few drivers would care about these.&lt;/p&gt;
+&lt;p&gt;It is unclear what the drivers will do a few years from now. Maybe they'll all
+buy new cars and finally start using the new road? Maybe the new road will add
+enough lanes and use other sales tricks to attract the drivers? Time will tell.&lt;/p&gt;
+&lt;p&gt;In the mean time, drivers are losing faith and begin questioning the future of
+both roads and are looking at other roads in the hopes of a safer and more
+pleasant drive.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;p&gt;I used this analogy to describe the state of Python 2/3 to a friend who knows
+nothing about programming. Like many Python programmers, he too would
+continue using the old road.&lt;/p&gt;
+&lt;p&gt;As the sun sets on PyCon 2015 and another year has gone by without considerable
+progress towards adoption of Python 3, we are introduced to optional type hints
+in the language.  Optional was repeated numerous times in GvR keynote,
+as if he's already giving his defense against it.  I think it
+misses the point a little because if just 10% of the python I'll be reading looks like
+&lt;a href="https://www.python.org/dev/peps/pep-0484/#function-overloading"&gt;this&lt;/a&gt; then
+I won't be reading it for much longer.&lt;/p&gt;
+&lt;p&gt;The end of the tunnel to Python 3 is no where in sight.&lt;/p&gt;</summary><category term="python"></category></entry><entry><title>lower bound on finding the k-smallest elements in sorted order</title><link href="http://aleph.nu/blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/" rel="alternate"></link><updated>2012-01-01T14:58:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-01-01:blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/</id><summary type="html">&lt;blockquote&gt;
+Any comparison based algorithm solves the problem of finding the &lt;i&gt;k&lt;/i&gt;-smallest
+elements in sorted order in $\Omega(k\lg{n})$ time for an &lt;i&gt;n&lt;/i&gt;-length array.
+&lt;/blockquote&gt;
+
+&lt;p&gt;To find a lower bound on the running time of any algorithm solving the above problem using comparisons we use the &lt;a href="http://en.wikipedia.org/wiki/Decision_tree_model"&gt;decision tree model&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;What are the possible solutions an algorithm solving this problem produces?
+For an input array of length &lt;em&gt;n&lt;/em&gt;, any subset of length &lt;em&gt;k&lt;/em&gt; is a possible
+solution. But because the algorithm needs to produce the result in sorted
+order, we have to take into account every possible permutation of those &lt;em&gt;k&lt;/em&gt;-length
+solutions.&lt;/p&gt;
+&lt;p&gt;So in total there are &lt;span class="math"&gt;\(\binom{n}{k} k!=n(n-1)\cdot \ldots \cdot (n-k+1)\)&lt;/span&gt; possible solutions.&lt;/p&gt;
+&lt;p&gt;Suppose our decision tree has &lt;em&gt;l&lt;/em&gt; leaves, and its height is &lt;em&gt;h&lt;/em&gt;.
+Every possible solution is a leaf in the tree, so &lt;span class="math"&gt;\(n(n-1)\cdot \ldots \cdot (n-k+1) \leq l\)&lt;/span&gt;.
+Also, a binary tree of height &lt;em&gt;h&lt;/em&gt;, has at most &lt;span class="math"&gt;\(2^h\)&lt;/span&gt; leaves.&lt;/p&gt;
+&lt;p&gt;We have the following bounds for the number of leaves &lt;em&gt;l&lt;/em&gt;: &lt;/p&gt;
+&lt;div class="math"&gt;$$(n-k+1)^k &amp;lt; n(n-1)\cdot \ldots \cdot (n-k+1) \leq l \leq 2^h$$&lt;/div&gt;
+&lt;p&gt; and we're looking to bound &lt;em&gt;h&lt;/em&gt; from below.&lt;/p&gt;
+&lt;p&gt;Taking &lt;span class="math"&gt;\(\lg\)&lt;/span&gt; from both sides gives us &lt;span class="math"&gt;\(\lg{(n-k+1)^k} = k\lg{(n-k+1)} &amp;lt; h\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;For &lt;span class="math"&gt;\(k \leq n/2\)&lt;/span&gt; the above inequality gives us &lt;span class="math"&gt;\(h &amp;gt; k\lg{n}\)&lt;/span&gt;, so the height of the tree is &lt;span class="math"&gt;\(\Omega(k\lg{n})\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If &lt;span class="math"&gt;\(k &amp;gt; n/2\)&lt;/span&gt;, we can think of the problem as finding the &lt;em&gt;n-k&lt;/em&gt; &lt;strong&gt;largest&lt;/strong&gt; elements and sorting the rest of the elements (this works because the "rest" are in fact the smallest).&lt;/p&gt;
+&lt;p&gt;We already showed that we can solve the problem if &lt;span class="math"&gt;\(k \leq n/2\)&lt;/span&gt; for the smallest, but it doesn't really matter whether it's the smallest or largest. So finding the &lt;span class="math"&gt;\(n-k &amp;lt; n/2\)&lt;/span&gt; largest elements will take &lt;span class="math"&gt;\(\Omega((n-k)\lg{n})\)&lt;/span&gt;, and sorting the &lt;em&gt;k &amp;gt; n/2&lt;/em&gt; remaining elements will take &lt;span class="math"&gt;\(\Omega(k\lg{k})=\Omega(k\lg{n/2})=\Omega(k\lg{n})\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Overall it takes &lt;span class="math"&gt;\(\Omega((n-k)\lg{n})+\Omega(k\lg{n})=\Omega(k\lg{n})\)&lt;/span&gt;, since &lt;span class="math"&gt;\(n-k &amp;lt; n/2 &amp;lt; k\)&lt;/span&gt;, and we're done.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="algorithms"></category></entry><entry><title>refresh browser when html or css changes</title><link href="http://aleph.nu/blog/2011/refresh-browser-when-html-or-css-changes/" rel="alternate"></link><updated>2011-12-17T11:32:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-12-17:blog/2011/refresh-browser-when-html-or-css-changes/</id><summary type="html">&lt;p&gt;If you work regularly with web pages you know how tedious it is to go back and forth between your editor and browser and hitting refresh to see the changes.&lt;/p&gt;
+&lt;p&gt;This shell script finds the browser window of a given HTML file and refreshes it:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span class="nv"&gt;windowtitle&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;sed -ne &lt;span class="s2"&gt;&amp;quot;s/&amp;lt;title&amp;gt;\(.*\)&amp;lt;\/title&amp;gt;/\1/p&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;couldn&amp;#39;t find &amp;lt;title&amp;gt; in file&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$1&lt;/span&gt; 1&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;2
+    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c"&gt;# get rid of leading/trailing whitespace&lt;/span&gt;
+&lt;span class="nv"&gt;windowtitle&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -n &lt;span class="nv"&gt;$windowtitle&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$windowtitle&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;couldn&amp;#39;t find &amp;lt;title&amp;gt; in file&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$1&lt;/span&gt; 1&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;2
+    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c"&gt;# oldid=$(xdotool getwindowfocus)&lt;/span&gt;
+&lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xdotool search -title &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$windowtitle&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;window not found&amp;#39;&lt;/span&gt; 1&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;2
+    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+xdotool windowactivate &lt;span class="nv"&gt;$id&lt;/span&gt;
+xdotool key F5 &lt;span class="nv"&gt;$id&lt;/span&gt;
+&lt;span class="c"&gt;# xdotool windowactivate $oldid&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The first half of the script is basically just getting the &amp;lt;title&amp;gt; of the file so we can find the correct window to refresh. The rest is giving it focus and hitting F5.&lt;/p&gt;
+&lt;p&gt;The two commented lines are for those who have multiple monitors with the browser and editor visible at the same time. Then it makes sense to give focus back to the original window. Uncomment them if you'd like that.&lt;/p&gt;
+&lt;p&gt;Both of these snippets require &lt;strong&gt;xdotool&lt;/strong&gt;, which can be found in any distro package manager (in Ubuntu/Debian &lt;code&gt;sudo apt-get install xdotool&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;This can be integrated into vim like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;autocmd FileType html noremap &amp;lt;buffer&amp;gt;&amp;lt;silent&amp;gt; K :update &amp;lt;Bar&amp;gt;
+    \ execute &amp;#39;silent !~/refresh.sh &amp;quot;%&amp;quot;&amp;#39;&amp;lt;CR&amp;gt;&amp;lt;Esc&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Putting this in your .vimrc and hitting &lt;kbd&gt;K&lt;/kbd&gt; will save the current file and run the script, assuming it's at &lt;code&gt;~/refresh.sh&lt;/code&gt;.&lt;/p&gt;</summary><category term="bash"></category><category term="html"></category><category term="vim"></category></entry><entry><title>solving the selection problem given the im/n smallest element</title><link href="http://aleph.nu/blog/2011/solving-the-selection-problem-given-the-imn-smallest-element/" rel="alternate"></link><updated>2011-12-10T22:35:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-12-10:blog/2011/solving-the-selection-problem-given-the-imn-smallest-element/</id><summary type="html">&lt;p&gt;Given a black-box capable of finding the &lt;span class="math"&gt;\(\left \lfloor \frac{in}{m} \right \rfloor\)&lt;/span&gt;
+smallest element in an array of length &lt;span class="math"&gt;\(n\)&lt;/span&gt;, where &lt;span class="math"&gt;\(1 \leq i \lt m\)&lt;/span&gt; are constant,
+find the &lt;span class="math"&gt;\(k\)&lt;/span&gt;-th smallest element in a given array using the black-box in linear time.&lt;/p&gt;
+&lt;p&gt;Suppose our black-box is capable of finding the median of an array of length &lt;span class="math"&gt;\(n\)&lt;/span&gt;, how would we solve the same problem?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Find the median of &lt;span class="math"&gt;\(A[p..r]\)&lt;/span&gt; using the black-box.&lt;/li&gt;
+&lt;li&gt;Partition &lt;span class="math"&gt;\(A\)&lt;/span&gt; using the median as our pivot. Suppose the median's index after partitioning is &lt;span class="math"&gt;\(q\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;If &lt;span class="math"&gt;\(q-p+1 = k\)&lt;/span&gt; then &lt;span class="math"&gt;\(A[q]\)&lt;/span&gt; is the element we're looking for and we're done.&lt;/li&gt;
+&lt;li&gt;If &lt;span class="math"&gt;\(k \lt q-p+1\)&lt;/span&gt;, recursively call our procedure on &lt;span class="math"&gt;\(A[p..q-1]\)&lt;/span&gt;, otherwise call it on &lt;span class="math"&gt;\(A[q+1..r]\)&lt;/span&gt; with &lt;span class="math"&gt;\(k=k-(q-p+1)\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Steps 1 and 2 take &lt;span class="math"&gt;\(\Theta(n)\)&lt;/span&gt; time. In step 4 we cut the array in half, so we can express the running time of our algorithm using this recurrence relation: &lt;/p&gt;
+&lt;div class="math"&gt;$$T(n)=T\left (\frac{n}{2} \right )+\Theta(n)$$&lt;/div&gt;
+&lt;p&gt; Solving this gives us &lt;span class="math"&gt;\(T(n)=\Theta(n)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Back to our original problem: if we use the exact same algorithm, except in step 1 find the &lt;span class="math"&gt;\(\left \lfloor \frac{in}{m} \right \rfloor\)&lt;/span&gt; smallest element in &lt;span class="math"&gt;\(A[p..q]\)&lt;/span&gt; where &lt;span class="math"&gt;\(q-p+1=n\)&lt;/span&gt;, it will still work.&lt;/p&gt;
+&lt;p&gt;The question that remains, is it still linear? It turns out the answer is yes. Let's prove it:&lt;/p&gt;
+&lt;div class="math"&gt;$$ T(n)=T(\max (\left \lfloor \frac{in}{m} \right \rfloor-1, n-\left \lfloor \frac{in}{m} \right \rfloor-1))+\Theta(n)$$&lt;/div&gt;
+&lt;p&gt;Let &lt;span class="math"&gt;\(an \in \Theta(n)\)&lt;/span&gt;. Suppose there exists some &lt;span class="math"&gt;\(c\)&lt;/span&gt; such that &lt;span class="math"&gt;\(T(n) \leq cn\)&lt;/span&gt;, then: &lt;/p&gt;
+&lt;div class="math"&gt;$$ \begin{align}
+    T(n) &amp;amp; =T(\max (\left \lfloor \frac{in}{m} \right \rfloor-1, n-\left \lfloor \frac{in}{m} \right \rfloor-1))+an \\\\\\
+         &amp;amp; \leq c (\max (\left \lfloor \frac{in}{m} \right \rfloor-1, n-\left \lfloor \frac{in}{m} \right \rfloor-1))+an \\\\\\
+         &amp;amp;\leq c (\max ( \frac{in}{m} , n- \frac{in}{m} ))+an \\\\\\
+         &amp;amp;=cn(\max ( \frac{i}{m} , 1-\frac{i}{m} ))+an
+  \end{align}$$&lt;/div&gt;
+&lt;p&gt;Since &lt;span class="math"&gt;\(\frac{i}{m} \lt 1\)&lt;/span&gt;, let us denote &lt;span class="math"&gt;\(q=\max ( \frac{i}{m} , 1-\frac{i}{m} ) \lt 1\)&lt;/span&gt;: &lt;/p&gt;
+&lt;div class="math"&gt;$$T(n) \leq cqn+an = cn - (1-q)cn+an = cn+(an-(1-q)cn)$$&lt;/div&gt;
+&lt;p&gt; We are looking for &lt;span class="math"&gt;\(c\)&lt;/span&gt; such that &lt;span class="math"&gt;\(an-(1-q)cn \leq 0\)&lt;/span&gt;, any &lt;span class="math"&gt;\(c \geq \frac{a}{1-q}\)&lt;/span&gt; will do.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="algorithms"></category></entry><entry><title>kth smallest element in union of sorted arrays</title><link href="http://aleph.nu/blog/2011/kth-smallest-element-in-union-of-sorted-arrays/" rel="alternate"></link><updated>2011-12-08T12:25:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-12-08:blog/2011/kth-smallest-element-in-union-of-sorted-arrays/</id><summary type="html">&lt;blockquote&gt;
+Given two sorted arrays A and B of length n, find the kth smallest element in the union of the two arrays (imagine the two arrays are merged into one sorted array of length 2n). Do so in $ \Theta (\lg n) $.
+&lt;/blockquote&gt;
+
+&lt;p&gt;If we pick two elements, &lt;span class="math"&gt;\(A[i]\)&lt;/span&gt; and &lt;span class="math"&gt;\(B[j]\)&lt;/span&gt;, and look at the bigger of the two, let it be &lt;span class="math"&gt;\(A[i]\)&lt;/span&gt;, we know that it is &lt;strong&gt;at least&lt;/strong&gt; the &lt;span class="math"&gt;\(i+j\)&lt;/span&gt; smallest element in &lt;span class="math"&gt;\(A \cup B\)&lt;/span&gt;. Why? Because it is bigger than everything in &lt;span class="math"&gt;\(A[1..i-1]\)&lt;/span&gt; and &lt;span class="math"&gt;\(B[1..j]\)&lt;/span&gt;, and the amount of elements in those two is equal to &lt;span class="math"&gt;\(i+j\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;What about the smaller of the two, &lt;span class="math"&gt;\(B[j]\)&lt;/span&gt;? We can say that it's &lt;strong&gt;at most&lt;/strong&gt; the &lt;span class="math"&gt;\(i+j-1\)&lt;/span&gt; smallest element in &lt;span class="math"&gt;\(A \cup B\)&lt;/span&gt;. Why? Because &lt;span class="math"&gt;\(A[i+1..n], B[j..n]\)&lt;/span&gt; are all bigger than it.&lt;/p&gt;
+&lt;p&gt;Now if &lt;span class="math"&gt;\(k &amp;amp;lt; i+j\)&lt;/span&gt;, we can say for sure that our &lt;span class="math"&gt;\(k\)&lt;/span&gt;th smallest element is not &lt;span class="math"&gt;\(A[i]\)&lt;/span&gt; or any of A's elements after it. Similarly, if &lt;span class="math"&gt;\(k \geq i+j\)&lt;/span&gt;, that rules out &lt;span class="math"&gt;\(B[1..j]\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;We start at &lt;span class="math"&gt;\(A[\lfloor \frac{n}{2} \rfloor], B[\lfloor \frac{n}{2} \rfloor]\)&lt;/span&gt;, and depending on who's bigger, we use the above observations to rule out either the bottom or top half of one of the arrays. If we rule the top of an array, we go back to our original problem only one of the arrays has shrunk in half. If we rule out the bottom, we now have to find the &lt;span class="math"&gt;\((k-\)&lt;/span&gt; number of elements thrown&lt;span class="math"&gt;\()\)&lt;/span&gt; smallest element in the halved array and the untouched one.&lt;/p&gt;
+&lt;p&gt;We are done when one of the arrays is empty, then we simply return the &lt;span class="math"&gt;\(k\)&lt;/span&gt;th element in the other one.&lt;/p&gt;
+&lt;p&gt;It should be fairly obvious why this takes &lt;span class="math"&gt;\(\Theta (\lg n)\)&lt;/span&gt;. At each step of the algorithm we do a constant amount of work, and our recursion call loses half an array (similar to binary search).&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="algorithms"></category></entry><entry><title>first poc of the command server</title><link href="http://aleph.nu/blog/2011/first-poc-of-the-command-server/" rel="alternate"></link><updated>2011-06-04T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-06-04:blog/2011/first-poc-of-the-command-server/</id><summary type="html">&lt;p&gt;Yesterday I sent out an &lt;a href="http://article.gmane.org/gmane.comp.version-control.mercurial.devel/42131"&gt;early version&lt;/a&gt; of the command server to the mailing list (&lt;a href="https://bitbucket.org/idank/hg-cmdserver"&gt;patch queue&lt;/a&gt;), which included:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;new option --cmdserver to &lt;code&gt;hg serve&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;a small Python wrapper, hglib, around the server that can connect to a repository and run commands. Also included is a sample of how real hg commands might look like in the lib, see status().&lt;/li&gt;
+&lt;li&gt;a shell that uses hglib and runs commands against a given repository.&lt;/li&gt;
+&lt;li&gt;last 2 patches are an attempt to integrate the command server to the test suite.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the next few days I'll be working on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for interactive commands.&lt;/li&gt;
+&lt;li&gt;Making more tests pass the testsuite using the command server.&lt;/li&gt;
+&lt;li&gt;Finalizing the command wire protocol and writing it down in a wiki page.&lt;/li&gt;
+&lt;li&gt;Feedback from other devs on the PoC.&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="gsoc"></category><category term="mercurial"></category></entry><entry><title>sub-second precision is not enough</title><link href="http://aleph.nu/blog/2011/sub-second-precision-is-not-enough/" rel="alternate"></link><updated>2011-06-04T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-06-04:blog/2011/sub-second-precision-is-not-enough/</id><summary type="html">&lt;p&gt;Turns out relying on st_mtime having sub-second precision is not reliable enough, as this small test demonstrates:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;touch a b &lt;span class="p"&gt;;&lt;/span&gt; stat a b &lt;span class="p"&gt;|&lt;/span&gt; grep Modify
+Modify: 2011-07-28 15:36:19.505160175 +0300
+Modify: 2011-07-28 15:36:19.505160175 +0300
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Opening one more process seems to delay enough to show a difference:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;touch a &lt;span class="p"&gt;;&lt;/span&gt; touch b &lt;span class="p"&gt;;&lt;/span&gt; stat a b &lt;span class="p"&gt;|&lt;/span&gt; grep Modify
+Modify: 2011-07-28 15:37:50.082659665 +0300
+Modify: 2011-07-28 15:37:50.085158931 +0300
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(test was done on a Debian Squeeze, ext4 fs).&lt;/p&gt;
+&lt;p&gt;Not to mention that Python's underlying type for floats is only good for around sixteen digits. Taking out the ten digits before the decimal point, that leaves about six for sub-seconds.&lt;/p&gt;
+&lt;p&gt;This test:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="n"&gt;diffs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w+&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st_mtime&lt;/span&gt;
+
+    &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w+&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st_mtime&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;diffs&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;diffs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;diffs out of 10000 iterations&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;is giving me around ~30 per run, which is obviously not good enough.&lt;/p&gt;</summary><category term="gsoc"></category><category term="mercurial"></category><category term="python"></category></entry><entry><title>the filecache decorator</title><link href="http://aleph.nu/blog/2011/the-filecache-decorator/" rel="alternate"></link><updated>2011-06-04T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-06-04:blog/2011/the-filecache-decorator/</id><summary type="html">&lt;p&gt;The past week or so I've been working on &lt;a href="http://markmail.org/thread/uublw3vjjrmqp5nr"&gt;a new decorator&lt;/a&gt; that tracks files under the .hg/ directory for changes.&lt;/p&gt;
+&lt;p&gt;In short, you use it on a method and it turns it to a property with caching the result, like &lt;a href="http://selenic.com/repo/hg/file/6d1d0b9c4ecc/mercurial/util.py#l164"&gt;propertycache&lt;/a&gt;. But it also gives you the ability to invalidate the cached property, which triggers a stat(2) call that checks if the file behind the property changed since the last time it was read.&lt;/p&gt;
+&lt;p&gt;I used it on the dirstate, changelog, manifest, bookmark files, and the tags cache in localrepo so far. What it means in practice is that a call to repo.invalidate() is significantly cheaper where some of the above haven't changed since the last time they were read.&lt;/p&gt;
+&lt;p&gt;This is crucial so the command server's cached repository stays up-to-date where it changes by a different process than the server itself, i.e. via committing to it directly on the command line.&lt;/p&gt;
+&lt;p&gt;The main issue with this approach is that we fail if we end up missing changes. For example, a filesystem that doesn't have subsecond precision, will cause our cache to lie in the following situation:&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td style="padding-right: 10px;"&gt;time&lt;td&gt;action&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;td&gt;file x is modified&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.1&lt;td&gt;file x is read, inserted to the cache&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.2&lt;td&gt;file x is modified again, size remains the same&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;We end up with file x from 0 in our cache. Now suppose we invalidate the cache, this triggers a stat('x'), in which st_mtime == 0, which according to our cache is the most recent version of x, hence no need to reread. But it was in fact modified afterwards, but our filesystem doesn't have the necessary precision to help us spot it.&lt;/p&gt;
+&lt;p&gt;So we have to make sure our cache is reliable, and if we can't, we must fallback to reading the file every time the cache is invalidated.&lt;/p&gt;
+&lt;p&gt;Luckily Mercurial's approach to writing files helps us here. Essentially most of the important files under .hg/ are either: 1) atomically replaced, 2) appended.&lt;/p&gt;
+&lt;p&gt;If our filesystem is able to tell us a) if a file is replaced, or b) if it has subsecond precision, we're basically good to go. Because if we have (a) then (1) is covered, and (2) is covered because st_size changes on append. And if we have (b) it's obvious.&lt;/p&gt;
+&lt;p&gt;The current plan is to use the above test to make sure our cache is reliable, otherwise read the file every time. In the future we can improve this by also noting &lt;strong&gt;when&lt;/strong&gt; the file was read.&lt;/p&gt;</summary><category term="gsoc"></category><category term="mercurial"></category><category term="python"></category></entry></feed>
