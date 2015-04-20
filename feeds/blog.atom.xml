@@ -71,10 +71,9 @@ running time of &lt;span class="math"&gt;\(\Theta(n\lg{k})\)&lt;/span&gt;.&lt;/p
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</summary><category term="algorithms"></category></entry><entry><title>lower bound on finding the k-smallest elements in sorted order</title><link href="http://aleph.nu/blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/" rel="alternate"></link><updated>2012-01-01T14:58:00-08:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-01-01:blog/2012/lower-bound-on-finding-the-k-smallest-elements-in-sorted-order/</id><summary type="html">&lt;blockquote&gt;
-Any comparison based algorithm solves the problem of finding the &lt;i&gt;k&lt;/i&gt;-smallest
-elements in sorted order in $\Omega(k\lg{n})$ time for an &lt;i&gt;n&lt;/i&gt;-length array.
+&lt;p&gt;Any comparison based algorithm solves the problem of finding the &lt;em&gt;k&lt;/em&gt;-smallest
+elements in sorted order in &lt;span class="math"&gt;\(\Omega(k\lg{n})\)&lt;/span&gt; time for an &lt;em&gt;n&lt;/em&gt;-length array.&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;To find a lower bound on the running time of any algorithm solving the above problem using comparisons we use the &lt;a href="http://en.wikipedia.org/wiki/Decision_tree_model"&gt;decision tree model&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;What are the possible solutions an algorithm solving this problem produces?
 For an input array of length &lt;em&gt;n&lt;/em&gt;, any subset of length &lt;em&gt;k&lt;/em&gt; is a possible
