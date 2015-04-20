@@ -308,20 +308,7 @@ Given two sorted arrays A and B of length n, find the kth smallest element in th
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="algorithms"></category></entry><entry><title>first poc of the command server</title><link href="http://aleph.nu/blog/2011/first-poc-of-the-command-server/" rel="alternate"></link><updated>2011-06-04T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-06-04:blog/2011/first-poc-of-the-command-server/</id><summary type="html">&lt;p&gt;Yesterday I sent out an &lt;a href="http://article.gmane.org/gmane.comp.version-control.mercurial.devel/42131"&gt;early version&lt;/a&gt; of the command server to the mailing list (&lt;a href="https://bitbucket.org/idank/hg-cmdserver"&gt;patch queue&lt;/a&gt;), which included:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;new option --cmdserver to &lt;code&gt;hg serve&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;a small Python wrapper, hglib, around the server that can connect to a repository and run commands. Also included is a sample of how real hg commands might look like in the lib, see status().&lt;/li&gt;
-&lt;li&gt;a shell that uses hglib and runs commands against a given repository.&lt;/li&gt;
-&lt;li&gt;last 2 patches are an attempt to integrate the command server to the test suite.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In the next few days I'll be working on:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Support for interactive commands.&lt;/li&gt;
-&lt;li&gt;Making more tests pass the testsuite using the command server.&lt;/li&gt;
-&lt;li&gt;Finalizing the command wire protocol and writing it down in a wiki page.&lt;/li&gt;
-&lt;li&gt;Feedback from other devs on the PoC.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="gsoc"></category><category term="mercurial"></category></entry><entry><title>sub-second precision is not enough</title><link href="http://aleph.nu/blog/2011/sub-second-precision-is-not-enough/" rel="alternate"></link><updated>2011-06-04T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-06-04:blog/2011/sub-second-precision-is-not-enough/</id><summary type="html">&lt;p&gt;Turns out relying on st_mtime having sub-second precision is not reliable enough, as this small test demonstrates:&lt;/p&gt;
+&lt;/script&gt;</summary><category term="algorithms"></category></entry><entry><title>sub-second precision is not enough</title><link href="http://aleph.nu/blog/2011/sub-second-precision-is-not-enough/" rel="alternate"></link><updated>2011-06-04T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-06-04:blog/2011/sub-second-precision-is-not-enough/</id><summary type="html">&lt;p&gt;Turns out relying on st_mtime having sub-second precision is not reliable enough, as this small test demonstrates:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;touch a b &lt;span class="p"&gt;;&lt;/span&gt; stat a b &lt;span class="p"&gt;|&lt;/span&gt; grep Modify
 Modify: 2011-07-28 15:36:19.505160175 +0300
 Modify: 2011-07-28 15:36:19.505160175 +0300
@@ -376,4 +363,17 @@ Modify: 2011-07-28 15:37:50.085158931 +0300
 &lt;p&gt;So we have to make sure our cache is reliable, and if we can't, we must fallback to reading the file every time the cache is invalidated.&lt;/p&gt;
 &lt;p&gt;Luckily Mercurial's approach to writing files helps us here. Essentially most of the important files under .hg/ are either: 1) atomically replaced, 2) appended.&lt;/p&gt;
 &lt;p&gt;If our filesystem is able to tell us a) if a file is replaced, or b) if it has subsecond precision, we're basically good to go. Because if we have (a) then (1) is covered, and (2) is covered because st_size changes on append. And if we have (b) it's obvious.&lt;/p&gt;
-&lt;p&gt;The current plan is to use the above test to make sure our cache is reliable, otherwise read the file every time. In the future we can improve this by also noting &lt;strong&gt;when&lt;/strong&gt; the file was read.&lt;/p&gt;</summary><category term="gsoc"></category><category term="mercurial"></category><category term="python"></category></entry></feed>
+&lt;p&gt;The current plan is to use the above test to make sure our cache is reliable, otherwise read the file every time. In the future we can improve this by also noting &lt;strong&gt;when&lt;/strong&gt; the file was read.&lt;/p&gt;</summary><category term="gsoc"></category><category term="mercurial"></category><category term="python"></category></entry><entry><title>first poc of the command server</title><link href="http://aleph.nu/blog/2011/first-poc-of-the-command-server/" rel="alternate"></link><updated>2011-06-04T10:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2011-06-04:blog/2011/first-poc-of-the-command-server/</id><summary type="html">&lt;p&gt;Yesterday I sent out an &lt;a href="http://article.gmane.org/gmane.comp.version-control.mercurial.devel/42131"&gt;early version&lt;/a&gt; of the command server to the mailing list (&lt;a href="https://bitbucket.org/idank/hg-cmdserver"&gt;patch queue&lt;/a&gt;), which included:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;new option --cmdserver to &lt;code&gt;hg serve&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;a small Python wrapper, hglib, around the server that can connect to a repository and run commands. Also included is a sample of how real hg commands might look like in the lib, see status().&lt;/li&gt;
+&lt;li&gt;a shell that uses hglib and runs commands against a given repository.&lt;/li&gt;
+&lt;li&gt;last 2 patches are an attempt to integrate the command server to the test suite.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the next few days I'll be working on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for interactive commands.&lt;/li&gt;
+&lt;li&gt;Making more tests pass the testsuite using the command server.&lt;/li&gt;
+&lt;li&gt;Finalizing the command wire protocol and writing it down in a wiki page.&lt;/li&gt;
+&lt;li&gt;Feedback from other devs on the PoC.&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="gsoc"></category><category term="mercurial"></category></entry></feed>
