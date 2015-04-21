@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>aleph.nu</title><link href="http://aleph.nu/" rel="alternate"></link><link href="http://aleph.nu/feeds/all.atom.xml" rel="self"></link><id>http://aleph.nu/</id><updated>2012-10-13T11:37:00-07:00</updated><entry><title>upstart script section exits prematurely</title><link href="http://aleph.nu/blog/2012/upstart-script-section-exits-prematurely/" rel="alternate"></link><updated>2012-10-13T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-10-13:blog/2012/upstart-script-section-exits-prematurely/</id><summary type="html">&lt;p&gt;I wrote my first Upstart script today, and like anyone wanting
+<feed xmlns="http://www.w3.org/2005/Atom"><title>aleph.nu</title><link href="http://aleph.nu/" rel="alternate"></link><link href="http://aleph.nu/feeds/all.atom.xml" rel="self"></link><id>http://aleph.nu/</id><updated>2015-04-13T11:37:00-07:00</updated><entry><title>the python road not taken</title><link href="http://aleph.nu/blog/2015/the-python-road-not-taken/" rel="alternate"></link><updated>2015-04-13T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2015-04-13:blog/2015/the-python-road-not-taken/</id><summary type="html">&lt;p&gt;Imagine you have a road that people have been driving on for years. This road is
+solid. Damage would be fixed quickly. Every now and then it would be upgraded
+by adding a lane or raising the speed limit. It was connected to many other
+roads.&lt;/p&gt;
+&lt;p&gt;At some point the owners of the road decided the ground it is on isn't good
+enough, and went on to create a fork in the road so they could start building
+a new one. This new road was worked on for years. It attracted so many workers
+to help build it in hopes of a better road. Many plans were made to help
+drivers move to this new and improved road. But this road came with a price:
+pretty much everyone would need to buy a brand new car to use the road. Not
+only that, when people came to see how this road is better, the only thing they
+saw is that the road is slightly wider and that the speed limit is a fraction
+higher. Another problem with the new road was that it wasn't as connected as
+the old road, so drivers would have no way of reaching some of their
+destinations.  Over time connections were built, but often times driving on
+them resulted in fatalities.&lt;/p&gt;
+&lt;p&gt;People tried to tell the owners of the road that switching to the new
+road is too expensive with little upside, but the owners didn't listen and
+kept working on the new road, claiming that when enough time will pass
+everyone will switch to the new road.&lt;/p&gt;
+&lt;p&gt;Meanwhile the old road was still there with many drivers using it every single
+day. Holes in the road would still be fixed, but the owners ceased to
+improve it, now that they had built the new road.&lt;/p&gt;
+&lt;p&gt;Years have gone by and still drivers would choose to use the old and familiar
+road. Many attempts were made to lure drivers to use the new road, such as
+trading in the drivers old cars when they buy a new one.  Others seemed more
+crazy like adding a special lane for people who give a weeks notice before they
+use the road. Very few drivers would care about these.&lt;/p&gt;
+&lt;p&gt;It is unclear what the drivers will do a few years from now. Maybe they'll all
+buy new cars and finally start using the new road? Maybe the new road will add
+enough lanes and use other sales tricks to attract the drivers? Time will tell.&lt;/p&gt;
+&lt;p&gt;In the mean time, drivers are losing faith and begin questioning the future of
+both roads and are looking at other roads in the hopes of a safer and more
+pleasant drive.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;p&gt;I used this analogy to describe the state of Python 2/3 to a friend who knows
+nothing about programming. Like many Python programmers, he too would
+continue using the old road.&lt;/p&gt;
+&lt;p&gt;As the sun sets on PyCon 2015 and another year has gone by without considerable
+progress towards adoption of Python 3, we are introduced to optional type hints
+in the language.  Optional was repeated numerous times in GvR keynote,
+as if he's already giving his defense against the naysayers.  I think it
+misses the point a little because if just 10% of the python I'll be reading looks like
+&lt;a href="https://www.python.org/dev/peps/pep-0484/#function-overloading"&gt;this&lt;/a&gt; then
+I won't be reading it for much longer.&lt;/p&gt;
+&lt;p&gt;The end of the tunnel to Python 3 is (still) no where in sight.&lt;/p&gt;</summary><category term="python"></category></entry><entry><title>upstart script section exits prematurely</title><link href="http://aleph.nu/blog/2012/upstart-script-section-exits-prematurely/" rel="alternate"></link><updated>2012-10-13T11:37:00-07:00</updated><author><name>Idan Kamara</name></author><id>tag:aleph.nu,2012-10-13:blog/2012/upstart-script-section-exits-prematurely/</id><summary type="html">&lt;p&gt;I wrote my first Upstart script today, and like anyone wanting
 to get the job done quickly I haven't read the entire &lt;a href="http://upstart.ubuntu.com/cookbook"&gt;cookbook&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;So after spending a couple of minutes trying to figure out
 why my two line script is only executing the first command, I returned to the
